@@ -11,122 +11,84 @@
 df = pd.read_csv - функция библиотеки Pandas для чтения данных из CSV файла.
 #### Результат
 Датасет успешно загружен и содержит следующие колонки: age, workclass, fnlwgt, education, education-num, marital-status, occupation, relationship, race, sex, capital-gain, capital-loss, hours-per-week, native-country, salary.
-# Markdown Cheat Sheet
-
-Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
-
-This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax/) and [extended syntax](https://www.markdownguide.org/extended-syntax/).
-
-## Basic Syntax
-
-These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
-
-### Heading
-
-# H1
-## H2
-### H3
-
-### Bold
-
-**bold text**
-
-### Italic
-
-*italicized text*
-
-### Blockquote
-
-> blockquote
-
-### Ordered List
-
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-- First item
-- Second item
-- Third item
-
-### Code
-
-`code`
-
-### Horizontal Rule
-
----
-
-### Link
-
-[Markdown Guide](https://www.markdownguide.org)
-
-### Image
-
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
-
-## Extended Syntax
-
-These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
-
-### Table
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-### Fenced Code Block
-
-```
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
-```
-
-### Footnote
-
-Here's a sentence with a footnote. [^1]
-
-[^1]: This is the footnote.
-
-### Heading ID
-
-### My Great Heading {#custom-id}
-
-### Definition List
-
-term
-: definition
-
-### Strikethrough
-
-~~The world is flat.~~
-
-### Task List
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-### Emoji
-
-That is so funny! :joy:
-
-(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
-
-### Highlight
-
-I need to highlight these ==very important words==.
-
-### Subscript
-
-H~2~O
-
-### Superscript
-
-X^2^
+## Задание 1
+### Количество мужчин и женщин
+#### Используемые функции
+value_counts() - подсчет уникальных значений
+**Обращение к столбцу через** df['column_name']
+#### Результат#
+**Мужчины**: 21,792
+**Женщины**: 10,716
+# Задание 2
+### Средний возраст мужчин
+#### Используемые функции
+df[df['sex'] == 'Male'] - булева индексация для фильтрации
+['age'] - выбор конкретного столбца
+mean() - вычисление среднего значения
+#### Результат#
+Средний возраст мужчин: 39.43
+# Задание 3
+### Процент граждан Тайваня
+#### Используемые функции
+Используемые функции:
+df[df['native-country'] == 'Taiwan'] - фильтрация по условию
+shape[0] - получение количества строк
+#### Результат#
+Процент граждан Тайваня: 0.1566%
+Абсолютное количество: 51 из 32561
+# Задание 4
+### Средний возраст людей с доходом >50K
+#### Используемые функции
+df[df['salary'] == '>50K'] - фильтрация по уровню дохода
+['age'].mean() - вычисление среднего возраста
+#### Результат
+Средний возраст людей с доходом >50K: 44.25
+# Задание 5
+### Стандартное отклонение возраста для высокодоходной группы
+#### Используемые функции
+df[df['salary'] == '>50K'] - фильтрация
+['age'].std() - расчет стандартного отклонения
+#### Результат
+Стандартное отклонение возраста людей с доходом >50K: 10.52
+# Задание 6
+### Проверка образования высокодоходной группы
+#### Используемые функции
+len - Возвращает количество элементов
+#### Результат
+НЕТ, не все люди с доходом >50K имеют образование Bachelors+
+# Задание 7
+### Люди с стандартной рабочей неделей в США
+#### Используемые функции
+Множественная фильтрация через & (логическое И)
+df[condition] - комбинирование условий
+shape[0] - подсчет количества записей
+#### Результат
+Количество человек, работающих 40 часов, граждан США с доходом <=50K: 10493
+# Задание 8
+### Максимальная рабочая нагрузка
+#### Используемые функции
+df['hours-per-week'].max() - нахождение максимального значения
+#### Результат
+Максимальное количество часов в неделю: 99
+Количество человек, работающих 99 часов и зарабатывающих <=50K: 60
+# Задание 9
+### Визуализация распределения по образованию
+#### Используемые функции
+value_counts() - подсчет по образованию
+sns.barplot() или plt.bar() - построение столбчатой диаграммы
+Методы оформления графика (title(), xlabel(), ylabel())
+#### Результат
+Создана визуализация образовательной структуры выборки
+# Задание 10
+### Анализ возрастного распределения
+#### Используемые функции
+sns.histplot() - построение гистограммы распределения
+np.histogram() - вычисление частот для интервалов
+#### Результат
+Проанализировано распределение возрастов и выявлены наиболее частотные интервалы
+## Вывод
+Гендерный состав показал значительный перевес в сторону мужчин (21,792 против 10,716 женщин), что составляет соотношение примерно 2:1
+Возрастная структура демонстрирует, что мужчины в среднем моложе (39.43 года), чем высокодоходная группа в целом (44.25 года)
+Граждане Тайваня составляют крайне незначительную долю выборки
+Высшее образование сильно коррелирует с высокими доходами, но не является обязательным условием - существуют успешные люди со средним образованием
+Экстремальные рабочие нагрузки (до 99 часов) не гарантируют высокого дохода, что свидетельствует о важности других факторов
