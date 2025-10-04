@@ -2,7 +2,15 @@
 ## Описание отчета
 В данном проекте проводится анализ демографических данных из датасета Adult, содержащего информацию о возрасте, образовании, занятости и доходах населения.
 ## Используемые библиотеки
-
+- **Pandas** - для обработки и анализа данных
+- **NumPy** - для математических операций
+- **Matplotlib & Seaborn** - для визуализации данных
+## Задание 0
+### Прочитайте скачанный датасет и выведите его
+#### Используемые функции
+df = pd.read_csv - функция библиотеки Pandas для чтения данных из CSV файла.
+#### Результат
+Датасет успешно загружен и содержит следующие колонки: age, workclass, fnlwgt, education, education-num, marital-status, occupation, relationship, race, sex, capital-gain, capital-loss, hours-per-week, native-country, salary.
 # Markdown Cheat Sheet
 
 Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
